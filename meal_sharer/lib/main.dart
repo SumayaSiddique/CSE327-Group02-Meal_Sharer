@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meal_sharer/Screens/Login/login_screen.dart';
 
 import 'constants.dart';
 
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(bodyColor: sTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const LoginScreen(),
     );
   }
 }
