@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:meal_sharer/Screens/Forgot%20password/forget_password_screen.dart';
 import 'package:meal_sharer/Screens/Home/home_screen.dart';
+
+import 'package:meal_sharer/Screens/Welcome/components/welcome_background.dart';
 import 'package:meal_sharer/constants.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -20,7 +22,7 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: WelcomeBackground(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -108,7 +110,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       child: const Text(
                         'Login',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: sBackgroundColor,
                           fontSize: 24,
                           fontFamily: 'SF Pro Rounded',
                         ),
@@ -165,7 +167,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           Icon(
-                            FontAwesomeIcons.google,
+                            FontAwesomeIcons.googlePlusG,
                             color: Colors.redAccent,
                           ),
                           SizedBox(
