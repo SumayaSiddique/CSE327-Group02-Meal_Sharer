@@ -88,7 +88,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 ),
               ),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 50,
                   width: 240,
                   child: ElevatedButton(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:meal_sharer/Screens/Sign-up/sign_up_screen.dart';
-import 'package:meal_sharer/Screens/Welcome/components/body.dart';
+import 'package:meal_sharer/Screens/Welcome/components/welcome_body.dart';
 import 'package:meal_sharer/constants.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: const Body(),
+      body: const WelcomeBody(),
       floatingActionButton: FloatingActionButton(
         child: FaIcon(
           FontAwesomeIcons.userPlus,
@@ -21,7 +21,9 @@ class WelcomeScreen extends StatelessWidget {
         ),
         backgroundColor: sPrimaryColor,
         onPressed: () {
-          Get.to(() => const SignUpScreen());
+          Get.to(
+            () => const SignUpScreen(),
+          );
         },
       ),
     );

@@ -4,15 +4,15 @@ import 'package:lottie/lottie.dart';
 import 'package:meal_sharer/Screens/Login/login_screen.dart';
 import 'package:meal_sharer/constants.dart';
 
-import 'background.dart';
+import 'welcome_background.dart';
 
-class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+class WelcomeBody extends StatelessWidget {
+  const WelcomeBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Background(
+    return WelcomeBackground(
       child: SafeArea(
         child: Stack(
           alignment: Alignment.topLeft,
