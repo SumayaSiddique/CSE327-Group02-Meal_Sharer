@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:meal_sharer/Screens/Welcome/welcome_screen.dart';
 
 import 'constants.dart';
 
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Meal Sharer',
       theme: ThemeData(
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(bodyColor: sTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: const WelcomeScreen(),
     );
   }
 }
