@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:meal_sharer/Screens/Profile/profile_screen.dart';
+import 'package:meal_sharer/Screens/Welcome/components/welcome_background.dart';
+import 'package:meal_sharer/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: WelcomeBackground(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -60,12 +64,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Donate\nFood",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: sBackgroundColor,
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
-                        primary: Colors.blue,
+                        primary: sPrimaryColor,
                       ),
                     ),
                   ),
@@ -73,17 +77,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 100,
                     width: 100,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => const ProfileScreen());
+                      },
                       child: const Text(
                         "Find\nDonated\nFoods",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: sBackgroundColor,
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
-                        primary: Colors.blue,
+                        primary: sPrimaryColor,
                       ),
                     ),
                   ),
