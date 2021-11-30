@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_sharer/Screens/Welcome/components/welcome_background.dart';
 import 'package:meal_sharer/constants.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -9,114 +10,111 @@ class ForgetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(),
-              Image.asset("assets/images/forgot_password.png"),
-              const Text(
-                "Reset Password",
-                style: TextStyle(
-                  fontSize: 25,
-                  color: sPrimaryColor,
-                  fontFamily: 'SF Pro Rounded',
-                  fontWeight: FontWeight.w700,
+      body: WelcomeBackground(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 12,
                 ),
-              ),
-              const SizedBox(height: 8),
-              const Opacity(
-                opacity: 0.7,
-                child: Text(
-                  "Enter the email associated with your account and we'll send an email with instructions to rest your password.",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: sTextColor,
-                    fontFamily: 'SF Pro Rounded',
-                    fontWeight: FontWeight.w300,
+                Image.asset("assets/images/forgot_password.png"),
+                const SizedBox(
+                  height: 12,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        "Reset Password",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: sPrimaryColor,
+                          fontFamily: 'SF Pro Rounded',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Opacity(
+                        opacity: 0.7,
+                        child: Text(
+                          "Enter the email associated with your account and we'll send an email with instructions to rest your password.",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: sTextColor,
+                            fontFamily: 'SF Pro Rounded',
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              // SizedBox(height: 24),
-              const SizedBox(height: 20),
-              SizedBox(
-                height: 70,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: "Email Address",
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
+                const SizedBox(
+                  height: 12,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                      vertical: 4,
-                    ),
-                    fillColor: sTextColor2,
-                    filled: true,
-                    prefixIcon: Icon(
-                      Icons.mail,
-                      color: sTextColor,
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 0.4,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(12),
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 0.4,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(12),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 0.4,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(12),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          labelText: "Email",
+                          suffixIcon: Icon(
+                            Icons.mail,
+                          ),
+                        ),
+                        onChanged: (value) {
+                          // email = value;
+                        },
                       ),
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: SizedBox(
-                  height: 50,
-                  width: 240,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: sPrimaryColor,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12.0),
+                const SizedBox(
+                  height: 18,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: sPrimaryColor,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20.0),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        // Get.to(() => const HomeScreen());
+                      },
+                      child: const Text(
+                        'Reset Password',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontFamily: 'SF Pro Rounded',
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      // Get.to(() => const LogInScreen());
-                    },
-                    child: const Text(
-                      'Reset Password',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: sBackgroundColor,
-                        fontSize: 22,
-                        fontFamily: 'SF Pro Rounded',
-                      ),
-                    ),
                   ),
                 ),
-              ),
-              const Spacer(),
-            ],
+              ],
+            ),
           ),
         ),
       ),
