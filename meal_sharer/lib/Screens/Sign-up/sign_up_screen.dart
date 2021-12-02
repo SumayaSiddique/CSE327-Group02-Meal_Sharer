@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:meal_sharer/Screens/Background/background_1.dart';
 import 'package:meal_sharer/Screens/Home/home_screen.dart';
 import 'package:meal_sharer/Screens/Welcome/components/welcome_background.dart';
 
@@ -13,7 +14,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WelcomeBackground(
+      body: Background1(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
