@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meal_sharer/Screens/Background/background_2.dart';
 import 'package:meal_sharer/Screens/Welcome/components/welcome_background.dart';
 
 import '../../constants.dart';
@@ -9,9 +10,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
+      body: Background2(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
@@ -33,6 +33,7 @@ class ProfileScreen extends StatelessWidget {
                       onPressed: () {},
                       icon: const Icon(
                         Icons.edit,
+                        color: sPrimaryColor,
                       ),
                     ),
                   ],
