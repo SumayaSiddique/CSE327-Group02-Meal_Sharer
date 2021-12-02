@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:meal_sharer/Screens/Background/background_2.dart';
-
 import 'package:meal_sharer/constants.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:meal_sharer/Constants/firebase_auth_constants.dart';
 import 'package:meal_sharer/Screens/Background/background_1.dart';
 import 'package:meal_sharer/Screens/Home/home_screen.dart';
-import 'package:meal_sharer/Screens/Welcome/components/welcome_background.dart';
-
 import '../../constants.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -182,7 +181,9 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        authController.signInWithGoogle();
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [

@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:meal_sharer/Screens/Background/background_2.dart';
 import 'package:meal_sharer/Screens/Profile/profile_screen.dart';
-import 'package:meal_sharer/Screens/Welcome/components/welcome_background.dart';
 import 'package:meal_sharer/constants.dart';
 
 class HomeScreen extends StatefulWidget {

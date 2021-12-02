@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:meal_sharer/Screens/Welcome/welcome_screen.dart';
 
+import 'Constants/firebase_auth_constants.dart';
+import 'Controllers/auth_controller.dart';
 import 'constants.dart';
 
-void main() {
-  runApp(
-    const MyApp(),
-  );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await firebaseInitialization.then((value) {
+    Get.put(AuthController());
+  });
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
