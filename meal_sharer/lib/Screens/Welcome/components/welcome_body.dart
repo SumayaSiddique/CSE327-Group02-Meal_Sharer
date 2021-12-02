@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:meal_sharer/Screens/Background/background_1.dart';
 import 'package:meal_sharer/Screens/Login/login_screen.dart';
 import 'package:meal_sharer/constants.dart';
-
-import 'welcome_background.dart';
 
 class WelcomeBody extends StatelessWidget {
   const WelcomeBody({Key? key}) : super(key: key);
@@ -12,7 +11,7 @@ class WelcomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return WelcomeBackground(
+    return Background1(
       child: SafeArea(
         child: Stack(
           alignment: Alignment.topLeft,
