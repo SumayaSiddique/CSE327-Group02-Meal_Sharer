@@ -18,10 +18,23 @@ class WelcomeBody extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.topCenter,
-              child: Lottie.asset(
-                'lottie/donate.json',
-                height: 300,
-                fit: BoxFit.cover,
+              child: Column(
+                children: [
+                  const Text(
+                    "Meal Sharer",
+                    style: TextStyle(
+                      color: sPrimaryColor,
+                      fontSize: 25,
+                      fontFamily: 'SF Pro Rounded',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Lottie.asset(
+                    'lottie/donate.json',
+                    height: 300,
+                    fit: BoxFit.cover,
+                  ),
+                ],
               ),
             ),
             // const Spacer(),
