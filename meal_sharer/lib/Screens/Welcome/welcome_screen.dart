@@ -22,7 +22,7 @@ class WelcomeScreen extends StatelessWidget {
         backgroundColor: sPrimaryColor,
         onPressed: () {
           Get.to(
-            () => const SignUpScreen(),
+            () => SignUpScreen(),
           );
         },
       ),
