@@ -91,4 +91,8 @@ class AuthController extends GetxController {
   void signOut() async {
     await auth.signOut();
   }
+
+  void resetPassword(String email) async {
+    await auth.sendPasswordResetEmail(email: email);
+  }
 }
