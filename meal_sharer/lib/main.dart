@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:meal_sharer/Screens/Welcome/welcome_screen.dart';
 
 import 'Constants/firebase_auth_constants.dart';
