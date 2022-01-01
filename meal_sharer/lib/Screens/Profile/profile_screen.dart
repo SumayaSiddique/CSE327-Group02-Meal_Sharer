@@ -65,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                       children: const [
                         SizedBox(width: 7),
                         Text(
-                          "Kakashi Hatake",
+                          "",
                           style: TextStyle(
                             fontSize: 18,
                             color: sPrimaryColor,
@@ -99,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
                       children: const [
                         SizedBox(width: 7),
                         Text(
-                          "I am Kakashi Hatake and am a shinobi of \nKonohagakure's Hatake clan. I am also \nknown as Kakashi of the Sharingan.\nI know the improtance of teamwork.",
+                          "",
                           style: TextStyle(
                             fontSize: 18,
                             color: sPrimaryColor,
@@ -133,7 +133,7 @@ class ProfileScreen extends StatelessWidget {
                       children: const [
                         SizedBox(width: 7),
                         Text(
-                          "KakashioftheSharingan@email.com",
+                          "",
                           style: TextStyle(
                             fontSize: 18,
                             color: sPrimaryColor,
