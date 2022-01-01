@@ -60,12 +60,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                 onChanged: (value) {
                                   email = value;
                                 },
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter Name';
-                                  }
-                                  return null;
-                                },
+                                validator: EmailFieldValidator.validate,
                               ),
                             ),
                           ),
@@ -95,12 +90,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                 onChanged: (value) {
                                   password = value;
                                 },
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter Name';
-                                  }
-                                  return null;
-                                },
+                                validator: PasswordFieldValidator.validate,
                               ),
                             ),
                           ),
@@ -221,5 +211,17 @@ class _LogInScreenState extends State<LogInScreen> {
     );
   }
 }
-// ignore: unused_element
 
+class EmailFieldValidator {
+  static String? validate(String? value) {
+    if (value == null) return null;
+    return value.isEmpty ? 'Email can not be empty!' : null;
+  }
+}
+
+class PasswordFieldValidator {
+  static String? validate(String? value) {
+    if (value == null) return null;
+    return value.isEmpty ? 'Password can not be empty!' : null;
+  }
+}

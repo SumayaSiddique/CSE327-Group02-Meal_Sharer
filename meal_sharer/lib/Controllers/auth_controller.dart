@@ -3,7 +3,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meal_sharer/Constants/firebase_auth_constants.dart';
 import 'package:meal_sharer/Screens/Home/home_screen.dart';
+import 'package:meal_sharer/Screens/Sign-up/collect_user_information.dart';
 import 'package:meal_sharer/Screens/Welcome/welcome_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -27,26 +29,72 @@ class AuthController extends GetxController {
     ever(googleSignInAccount, _setInitialScreenGoogle);
   }
 
-  _setInitialScreen(User? user) {
+  _setInitialScreen(User? user) async {
+    print("Initial Screen function");
     if (user == null) {
       // if the user is not found then the user is navigated to the Register Screen
       Get.offAll(() => const WelcomeScreen());
     } else {
-      // if the user exists and logged in the the user is navigated to the Home Screen
-      Get.offAll(() => const HomeScreen());
+      // check if user is a new user. if it's a new user then collect more information
+
+      // if the user exists and logged in the the user is navigated to the platform selection screen
+
+      await firebaseFirestore
+          .collection('users')
+          .doc(auth.currentUser!.uid)
+          .get()
+          .then((doc) async {
+        if (doc.exists) {
+          Get.offAll(() => const HomeScreen());
+        } else {
+          Get.offAll(() => const CollectUserInformation());
+        }
+      });
     }
   }
 
-  _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) {
-    print(googleSignInAccount);
+  _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) async {
+    print("Google initial Screen function");
+
     if (googleSignInAccount == null) {
       // if the user is not found then the user is navigated to the Register Screen
       Get.offAll(() => const WelcomeScreen());
     } else {
-      // if the user exists and logged in the the user is navigated to the Home Screen
-      Get.offAll(() => const HomeScreen());
+      // if the user exists and logged in the the user is navigated to the platform selection screen
+      await firebaseFirestore
+          .collection('users')
+          .doc(auth.currentUser!.uid)
+          .get()
+          .then((doc) async {
+        if (doc.exists) {
+          Get.offAll(() => const HomeScreen());
+        } else {
+          Get.offAll(() => const CollectUserInformation());
+        }
+      });
     }
   }
+
+  // _setInitialScreen(User? user) {
+  //   if (user == null) {
+  //     // if the user is not found then the user is navigated to the Register Screen
+  //     Get.offAll(() => const WelcomeScreen());
+  //   } else {
+  //     // if the user exists and logged in the the user is navigated to the Home Screen
+  //     Get.offAll(() => const HomeScreen());
+  //   }
+  // }
+
+  // _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) {
+  //   print(googleSignInAccount);
+  //   if (googleSignInAccount == null) {
+  //     // if the user is not found then the user is navigated to the Register Screen
+  //     Get.offAll(() => const WelcomeScreen());
+  //   } else {
+  //     // if the user exists and logged in the the user is navigated to the Home Screen
+  //     Get.offAll(() => const HomeScreen());
+  //   }
+  // }
 
   void signInWithGoogle() async {
     try {
@@ -75,10 +123,16 @@ class AuthController extends GetxController {
     }
   }
 
-  void register(String email, password) async {
+  void register(
+      String email, String name, String contactNumber, String password) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      await FirebaseFirestore.instance.collection('users').doc().set({
+        "email": email,
+        "name": name,
+        "contactNumber": contactNumber,
+      });
     } catch (firebaseAuthException) {}
   }
 
@@ -89,6 +143,7 @@ class AuthController extends GetxController {
   }
 
   void signOut() async {
+    await googleSign.disconnect();
     await auth.signOut();
   }
 

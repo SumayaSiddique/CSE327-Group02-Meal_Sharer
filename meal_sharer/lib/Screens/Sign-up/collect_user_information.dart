@@ -1,18 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:meal_sharer/Constants/firebase_auth_constants.dart';
 import 'package:meal_sharer/Screens/Background/background_1.dart';
-import '../../constants.dart';
+import 'package:meal_sharer/Util/profile_info/user_info.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+class CollectUserInformation extends StatefulWidget {
+  const CollectUserInformation({Key? key}) : super(key: key);
 
+  @override
+  _CollectUserInformationState createState() => _CollectUserInformationState();
+}
+
+class _CollectUserInformationState extends State<CollectUserInformation> {
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
   String number = '';
   String name = '';
+
+  get sPrimaryColor => null;
 
   @override
   Widget build(BuildContext context) {
@@ -178,69 +184,22 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState!.validate()) {
+                            await UserDataUtil.saveUserInfo(
+                                email, name, number);
                             // If the form is valid, display a snackbar. In the real world,
                             // you'd often call a server or save the information in a database.
-                            print(email + name + number + password);
-                            authController.register(
-                              email,
-                              name,
-                              number,
-                              password,
-                            );
+
                           }
                         },
                         child: const Text(
-                          'Sign Up',
+                          'Submit',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,
                             fontFamily: 'SF Pro Rounded',
                           ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 18,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.black,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20.0),
-                            ),
-                          ),
-                        ),
-                        onPressed: () {
-                          authController.signInWithGoogle();
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
-                              FontAwesomeIcons.googlePlusG,
-                              color: Colors.redAccent,
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Text(
-                              'Sign Up with Google',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     ),
