@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:meal_sharer/Screens/Welcome/welcome_screen.dart';
 
+import 'Constants/firebase_auth_constants.dart';
+import 'Controllers/auth_controller.dart';
 import 'constants.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await firebaseInitialization.then((value) {
+    Get.put(AuthController());
+  });
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Meal Sharer',
       theme: ThemeData(
@@ -24,6 +31,7 @@ class MyApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(bodyColor: sTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: const WelcomeScreen(),
     );
   }
 }
