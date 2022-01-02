@@ -5,13 +5,22 @@ import 'package:meal_sharer/Constants/firebase_auth_constants.dart';
 import 'package:meal_sharer/Screens/Background/background_1.dart';
 import '../../constants.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
+
   String email = '';
+
   String password = '';
+
   String number = '';
+
   String name = '';
 
   @override
@@ -170,9 +179,6 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            // If the form is valid, display a snackbar. In the real world,
-                            // you'd often call a server or save the information in a database.
-                            print(email + name + number + password);
                             authController.register(
                               email,
                               name,
