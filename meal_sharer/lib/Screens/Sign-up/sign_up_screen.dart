@@ -84,12 +84,7 @@ class SignUpScreen extends StatelessWidget {
                           onChanged: (value) {
                             name = value;
                           },
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter Name';
-                            }
-                            return null;
-                          },
+                          validator: NameFieldValidator.validate,
                         ),
                       ),
                     ),
@@ -117,12 +112,7 @@ class SignUpScreen extends StatelessWidget {
                           onChanged: (value) {
                             number = value;
                           },
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter Contact Number';
-                            }
-                            return null;
-                          },
+                          validator: ContactNumberFieldValidator.validate,
                         ),
                       ),
                     ),
@@ -252,5 +242,19 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class NameFieldValidator {
+  static String? validate(String? value) {
+    if (value == null) return null;
+    return value.isEmpty ? 'Name can not be empty!' : null;
+  }
+}
+
+class ContactNumberFieldValidator {
+  static String? validate(String? value) {
+    if (value == null) return null;
+    return value.isEmpty ? 'Number can not be empty!' : null;
   }
 }

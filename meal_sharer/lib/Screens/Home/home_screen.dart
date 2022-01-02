@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:meal_sharer/Constants/firebase_auth_constants.dart';
 import 'package:meal_sharer/Screens/Background/background_2.dart';
@@ -109,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Get.to(() => ChatRoom(category: ""));
+                        Get.to(() => const ChatRoom(category: ""));
                       },
                       child: const Text("Sign Out!"),
                     ),
