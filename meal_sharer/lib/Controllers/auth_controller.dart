@@ -30,7 +30,6 @@ class AuthController extends GetxController {
   }
 
   _setInitialScreen(User? user) async {
-    print("Initial Screen function");
     if (user == null) {
       // if the user is not found then the user is navigated to the Register Screen
       Get.offAll(() => const WelcomeScreen());
@@ -54,8 +53,6 @@ class AuthController extends GetxController {
   }
 
   _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) async {
-    print("Google initial Screen function");
-
     if (googleSignInAccount == null) {
       // if the user is not found then the user is navigated to the Register Screen
       Get.offAll(() => const WelcomeScreen());
@@ -109,9 +106,7 @@ class AuthController extends GetxController {
           idToken: googleSignInAuthentication.idToken,
         );
 
-        await auth
-            .signInWithCredential(credential)
-            .catchError((onErr) => print(onErr));
+        await auth.signInWithCredential(credential).catchError((onErr) {});
       }
     } catch (e) {
       Get.snackbar(
@@ -119,7 +114,6 @@ class AuthController extends GetxController {
         e.toString(),
         snackPosition: SnackPosition.BOTTOM,
       );
-      print(e.toString());
     }
   }
 
@@ -132,18 +126,25 @@ class AuthController extends GetxController {
         "email": email,
         "name": name,
         "contactNumber": contactNumber,
+        "bio": "This is your bio.",
       });
-    } catch (firebaseAuthException) {}
+    } catch (firebaseAuthException) {
+      throw Exception(firebaseAuthException.toString());
+    }
   }
 
   void login(String email, password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
-    } catch (firebaseAuthException) {}
+    } catch (firebaseAuthException) {
+      throw Exception(firebaseAuthException.toString());
+    }
   }
 
   void signOut() async {
-    await googleSign.disconnect();
+    if (googleSign.currentUser != null) {
+      await googleSign.disconnect();
+    }
     await auth.signOut();
   }
 
