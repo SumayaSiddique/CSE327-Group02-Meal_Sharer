@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:meal_sharer/Constants/firebase_auth_constants.dart';
 import 'package:meal_sharer/Screens/Background/background_2.dart';
@@ -21,6 +22,17 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SafeArea(
           child: Stack(
             children: [
+              Positioned(
+                right: 4,
+                child: IconButton(
+                  onPressed: () {
+                    Get.to(() => const ProfileScreen());
+                  },
+                  icon: const Icon(
+                    FontAwesomeIcons.user,
+                  ),
+                ),
+              ),
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -82,9 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 100,
                           width: 100,
                           child: ElevatedButton(
-                            onPressed: () {
-                              Get.to(() => const ProfileScreen());
-                            },
+                            onPressed: () {},
                             child: const Text(
                               "Find\nDonated\nFoods",
                               textAlign: TextAlign.center,

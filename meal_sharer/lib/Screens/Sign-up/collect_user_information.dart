@@ -12,10 +12,9 @@ class CollectUserInformation extends StatefulWidget {
 
 class _CollectUserInformationState extends State<CollectUserInformation> {
   final _formKey = GlobalKey<FormState>();
-  String email = '';
-  String password = '';
   String number = '';
   String name = '';
+  String bio = '';
 
   get sPrimaryColor => null;
 
@@ -33,39 +32,6 @@ class _CollectUserInformationState extends State<CollectUserInformation> {
                     height: 12,
                   ),
                   SvgPicture.asset('assets/icons/signup.svg'),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            labelText: "Email",
-                            suffixIcon: Icon(
-                              Icons.mail,
-                            ),
-                          ),
-                          onChanged: (value) {
-                            email = value;
-                          },
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter Email';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
                   const SizedBox(
                     height: 12,
                   ),
@@ -112,6 +78,39 @@ class _CollectUserInformationState extends State<CollectUserInformation> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: TextFormField(
+                          minLines: 1,
+                          maxLines: 5,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            labelText: "Bio",
+                            suffixIcon: Icon(Icons.book_sharp),
+                          ),
+                          onChanged: (value) {
+                            bio = value;
+                          },
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter information';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: TextFormField(
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             labelText: "Contact Number",
@@ -136,40 +135,6 @@ class _CollectUserInformationState extends State<CollectUserInformation> {
                     height: 12,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: TextFormField(
-                          obscureText: true,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            labelText: "Password",
-                            suffixIcon: Icon(
-                              Icons.password,
-                            ),
-                          ),
-                          onChanged: (value) {
-                            password = value;
-                          },
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter Password';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 18,
-                  ),
-                  Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32.0),
                     child: SizedBox(
                       width: double.infinity,
@@ -185,11 +150,7 @@ class _CollectUserInformationState extends State<CollectUserInformation> {
                         ),
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            await UserDataUtil.saveUserInfo(
-                                email, name, number);
-                            // If the form is valid, display a snackbar. In the real world,
-                            // you'd often call a server or save the information in a database.
-
+                            await UserDataUtil.saveUserInfo(name, number, bio);
                           }
                         },
                         child: const Text(
