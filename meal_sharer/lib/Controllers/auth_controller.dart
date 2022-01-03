@@ -8,9 +8,11 @@ import 'package:meal_sharer/Screens/Welcome/welcome_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthController extends GetxController {
+  //Creating an instance for the auth controller
   static AuthController instance = Get.find();
+  //A user account from fribase auth
   late Rx<User?> firebaseUser;
-
+  //A user from google signin
   late Rx<GoogleSignInAccount?> googleSignInAccount;
 
   @override
@@ -44,8 +46,10 @@ class AuthController extends GetxController {
           .get()
           .then((doc) async {
         if (doc.exists) {
+          // if the user is found then the user is navigated to the home Screen
           Get.offAll(() => const HomeScreen());
         } else {
+          // if the user is not found then the user is navigated to the CollectUserInformation Screen
           Get.offAll(() => const CollectUserInformation());
         }
       });
@@ -92,7 +96,7 @@ class AuthController extends GetxController {
   //     Get.offAll(() => const HomeScreen());
   //   }
   // }
-
+  // signin with google
   void signInWithGoogle() async {
     try {
       GoogleSignInAccount? googleSignInAccount = await googleSign.signIn();
@@ -108,7 +112,9 @@ class AuthController extends GetxController {
 
         await auth.signInWithCredential(credential).catchError((onErr) {});
       }
-    } catch (e) {
+    }
+    //If there is an error then show the dialogue
+    catch (e) {
       Get.snackbar(
         "Error",
         e.toString(),
@@ -117,6 +123,7 @@ class AuthController extends GetxController {
     }
   }
 
+  //Register with name, contact number, email & password
   void register(
       String email, String name, String contactNumber, String password) async {
     try {
@@ -128,26 +135,34 @@ class AuthController extends GetxController {
         "contactNumber": contactNumber,
         "bio": "This is your bio.",
       });
-    } catch (firebaseAuthException) {
+    }
+    //If there is an error then show the dialogue
+    catch (firebaseAuthException) {
       throw Exception(firebaseAuthException.toString());
     }
   }
 
+  //login with email & password
   void login(String email, password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
-    } catch (firebaseAuthException) {
+    }
+    //If there is an error then show the dialogue
+    catch (firebaseAuthException) {
       throw Exception(firebaseAuthException.toString());
     }
   }
 
+  //Sign Out
   void signOut() async {
+    //If there is any google sign in account then disconnect that google account
     if (googleSign.currentUser != null) {
       await googleSign.disconnect();
     }
     await auth.signOut();
   }
 
+  //Reset password with registered email
   void resetPassword(String email) async {
     await auth.sendPasswordResetEmail(email: email);
   }

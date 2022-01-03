@@ -80,6 +80,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
+                              //This is an email text field
                               child: TextFormField(
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -91,6 +92,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                                 onChanged: (value) {
                                   email = value;
                                 },
+                                //Validation for email
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter Name';
@@ -119,6 +121,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                                 ),
                               ),
                               onPressed: () {
+                                //If email validation true then it will go to auth controller
                                 if (_formKey.currentState!.validate()) {
                                   authController.resetPassword(email);
                                 }

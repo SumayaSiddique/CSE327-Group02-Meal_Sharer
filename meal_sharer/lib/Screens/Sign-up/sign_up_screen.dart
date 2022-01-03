@@ -5,6 +5,7 @@ import 'package:meal_sharer/Constants/firebase_auth_constants.dart';
 import 'package:meal_sharer/Screens/Background/background_1.dart';
 import '../../constants.dart';
 
+//This class define SignUp Form widget.
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -12,15 +13,18 @@ class SignUpScreen extends StatefulWidget {
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
+// This class holds data related to the form.
 class _SignUpScreenState extends State<SignUpScreen> {
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the login form.
   final _formKey = GlobalKey<FormState>();
-
+//variable decleared for email.
   String email = '';
-
+//variable decleared for password.
   String password = '';
-
+//variable decleared for number.
   String number = '';
-
+//variable decleared for name.
   String name = '';
 
   @override
@@ -49,6 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        //This is email textformfield
                         child: TextFormField(
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -60,6 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           onChanged: (value) {
                             email = value;
                           },
+                          // The validator receives the text that the user has entered.
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter Email';
@@ -82,6 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        //This is Name textformfield
                         child: TextFormField(
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -93,6 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           onChanged: (value) {
                             name = value;
                           },
+                          // The validator receives the text that the user has entered.
                           validator: NameFieldValidator.validate,
                         ),
                       ),
@@ -110,6 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        //This is Number textformfield
                         child: TextFormField(
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -121,6 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           onChanged: (value) {
                             number = value;
                           },
+                          // The validator receives the text that the user has entered.
                           validator: ContactNumberFieldValidator.validate,
                         ),
                       ),
@@ -138,6 +148,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        //This is password textformfield
                         child: TextFormField(
                           obscureText: true,
                           decoration: const InputDecoration(
@@ -150,6 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           onChanged: (value) {
                             password = value;
                           },
+                          // The validator receives the text that the user has entered.
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter Password';
@@ -216,6 +228,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         onPressed: () {
+                          //sign up with google and save user data to database
                           authController.signInWithGoogle();
                         },
                         child: Row(
@@ -251,6 +264,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
+// this is validating the Name textformfield
 class NameFieldValidator {
   static String? validate(String? value) {
     if (value == null) return null;
@@ -258,6 +272,7 @@ class NameFieldValidator {
   }
 }
 
+// this is validating the Number textformfield
 class ContactNumberFieldValidator {
   static String? validate(String? value) {
     if (value == null) return null;
