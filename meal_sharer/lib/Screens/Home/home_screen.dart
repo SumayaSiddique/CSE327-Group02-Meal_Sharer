@@ -112,15 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        authController.signOut();
-                      },
-                      child: const Text("Sign Out!"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
                         Get.to(() => const ChatRoom(category: ""));
                       },
-                      child: const Text("Sign Out!"),
+                      child: const Text("Chat Room!"),
                     ),
                   ],
                 ),
