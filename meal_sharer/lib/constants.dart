@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// these are all Material color for the overall UI
 const Color sPrimaryColor = Color(0xff012A4A);
 const Color sTextColor = Color(0xff013A63);
 const Color sTextColor2 = Color(0xffE6E6E6);
