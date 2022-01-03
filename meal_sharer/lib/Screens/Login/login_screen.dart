@@ -7,6 +7,7 @@ import 'package:meal_sharer/Screens/Background/background_2.dart';
 import 'package:meal_sharer/Screens/Forgot%20password/forget_password_screen.dart';
 import 'package:meal_sharer/constants.dart';
 
+//This class define login Form widget.
 class LogInScreen extends StatefulWidget {
   const LogInScreen({Key? key}) : super(key: key);
 
@@ -14,9 +15,14 @@ class LogInScreen extends StatefulWidget {
   State<LogInScreen> createState() => _LogInScreenState();
 }
 
+// This class holds data related to the form.
 class _LogInScreenState extends State<LogInScreen> {
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the login form.
   final _formKey = GlobalKey<FormState>();
+  //variable decleared for email
   String email = '';
+  //variable decleared for password
   String password = '';
 
   @override
@@ -49,6 +55,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
+                              //This is email textformfield
                               child: TextFormField(
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -60,6 +67,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                 onChanged: (value) {
                                   email = value;
                                 },
+                                // The validator receives the text that the user has entered.
                                 validator: EmailFieldValidator.validate,
                               ),
                             ),
@@ -78,6 +86,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
+                              //This is Password textformfield
                               child: TextFormField(
                                 obscureText: true,
                                 decoration: const InputDecoration(
@@ -90,6 +99,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                 onChanged: (value) {
                                   password = value;
                                 },
+                                // The validator receives the text that the user has entered.
                                 validator: PasswordFieldValidator.validate,
                               ),
                             ),
@@ -113,7 +123,9 @@ class _LogInScreenState extends State<LogInScreen> {
                                 ),
                               ),
                               onPressed: () {
+                                //if the user filled up all the required textfield
                                 if (_formKey.currentState!.validate()) {
+                                  //save user information in database
                                   authController.login(email, password);
                                 }
                               },
@@ -135,6 +147,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             height: 55,
                             child: TextButton(
                               onPressed: () {
+                                //This will navigate to the Forget Password Screen
                                 Get.to(() => const ForgetPasswordScreen());
                               },
                               child: const Text(
@@ -172,7 +185,10 @@ class _LogInScreenState extends State<LogInScreen> {
                                   ),
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                //log in with google and save user data to database
+                                authController.signInWithGoogle();
+                              },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: const [
@@ -209,6 +225,7 @@ class _LogInScreenState extends State<LogInScreen> {
   }
 }
 
+// this is validating the email textformfield
 class EmailFieldValidator {
   static String? validate(String? value) {
     if (value == null) return null;
@@ -216,6 +233,7 @@ class EmailFieldValidator {
   }
 }
 
+// this is validating the Password textformfield
 class PasswordFieldValidator {
   static String? validate(String? value) {
     if (value == null) return null;

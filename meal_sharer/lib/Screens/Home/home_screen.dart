@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:meal_sharer/Constants/firebase_auth_constants.dart';
 import 'package:meal_sharer/Screens/Background/background_2.dart';
 import 'package:meal_sharer/Screens/Chat%20Room/chat_room.dart';
 import 'package:meal_sharer/Screens/Profile/profile_screen.dart';

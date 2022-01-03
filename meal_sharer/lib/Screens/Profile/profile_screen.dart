@@ -6,6 +6,7 @@ import 'package:meal_sharer/Screens/Sign-up/collect_user_information.dart';
 import 'package:meal_sharer/Util/profile_info/user_info.dart';
 import '../../constants.dart';
 
+//This class define Profile Screen.
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
